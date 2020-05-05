@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>QUIZ APP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body{margin: 0px; background: white;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 20pt;}
+    header{padding: 15px; color:orange; background:rgb(20, 20, 20)}
+    .pad{padding: 10px}
+    .center-div{width:80%; margin: auto; text-align: center; border: solid 4pt black; border-radius: 10px 0px 10px 0px}
+    div#quest{padding:30px; border-bottom: solid black 2pt; }
+    li{padding:20px; margin:5px; background: black; border-radius:10px; color:white; list-style-type: none;}
+
+    li:hover{background:rgb(77, 75, 75)}
+    input{padding: 20px; width:30%; border-radius:20px; margin:auto;}
+    .next{padding:10px; background: orange; color:white; border-radius:20px; display: inline-block; margin: 5px; width:30%; cursor:pointer; }
+    </style>
+
+</head>
+<body>
+    <header>QUIZ APP</header>
+    <div class="pad"></div>
+            <span style="margin-left:10px; color: orange;">COUNTER:<f id="score">0</f></span>
+    <div class="pad"></div>
+    <div class="center-div " id="board">
+        <div id="quest">Q1: What is Content Management System</div>
+        <div id="ans">
+                <div class="pad"></div>
+            <li onclick="clicker()" id="1">A Software platform for Managing Website content.</li>
+            <li onclick="clicker()" id="2">An Application Programming Interface</li>
+            <li onclick="clicker()" id="2">A Software for writing Codes</li>
+            <div class="pad"></div>
+        </div>
+        <div id="btn">
+           <span class="next" id="next" onclick="Next()">
+               Next
+           </span>
+           <div class="pad"></div>
+        </div>
+    </div>
+    <div class="pad"></div>
+    <div class="pad"></div>
+    
+    <script>
+    console.log("Started");
+    let scoreText = Number(document.getElementById("score").innerText);
+    let score = document.getElementById("score");
+    let li = document.getElementsByTagName("li");
+
+
+
+    const clicker = () =>{
+        if (event.target.id == 1) {
+            console.log("correct");
+            event.target.style.background = "green";
+            scoreText += 1;
+            score.innerHTML = scoreText;
+            li.CSS.pointerEvent = "none";
+            
+        }else{
+            console.log("wrong")
+            event.target.style.background = "red";
+            scoreText += 0;
+            score.innerHTML = scoreText;
+            document.getElementById("1").style.background = "green"
+           
+        }
+        
+    }
+
+let Questions = ["Q2: Elementor is an example of what?", "Q3: Which is NOT an Example of CMS?", "Q4: Whats the Full Meaning of CMS","Q5: Which Plugin is used in SEO"];
+
+let Answers = ['<div class="pad"></div><li onclick="clicker()" id="2">Template</li><li onclick="clicker()" id="2">SEO Plugin</li><li onclick="clicker()" id="1">Page Builder</li><div class="pad"></div>','<div class="pad"></div><li onclick="clicker()" id="2">WordPress</li><li onclick="clicker()" id="2">Joomla</li><li onclick="clicker()" id="1">VSCode</li><div class="pad"></div>','<div class="pad"></div><li onclick="clicker()" id="2">Content Marketing system</li><li onclick="clicker()" id="1">Content Management Systems</li><li onclick="clicker()" id="2">Code Modifier Software</li><div class="pad"></div>','<div class="pad"></div><li onclick="clicker()" id="1">Yoast</li><li onclick="clicker()" id="2">WP Forms</li><li onclick="clicker()" id="2">Elementor</li><div class="pad"></div>' ];
+
+     let add = 0;
+    const Next = () => {
+        let quest = document.getElementById("quest");
+        let ans = document.getElementById("ans");
+
+        quest.innerText = Questions[add];
+        ans.innerHTML = Answers[add]
+        if (add<=3){
+            add += 1;
+            if (add == 4){
+            document.getElementById("btn").innerHTML = '<span class="next" id="next" onclick="End()">'+'END'+'</span>'+'<div class="pad">'+'</div>'}
+            }
+    }
+
+    const End = () =>{
+        document.getElementById("btn").remove()
+        document.getElementById("board").innerHTML = '<h1 style="color:orange">'+'TOTAL SCORE:'+'</h1>'+'<p>'+(scoreText*20)+'%'+'/100%'+'</p>'
+    }
+    </script>
+</body>
+</html>
