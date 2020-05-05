@@ -29,7 +29,7 @@
         <div id="ans">
                 <div class="pad"></div>
             <li onclick="clicker()" id="1">A Software platform for Managing Website content.</li>
-            <li onclick="clicker()" id="2">An Application Programming Interface</li>
+            <li onclick="clicker()" id="2" >An Application Programming Interface</li>
             <li onclick="clicker()" id="2">A Software for writing Codes</li>
             <div class="pad"></div>
         </div>
@@ -57,17 +57,26 @@
             event.target.style.background = "green";
             scoreText += 1;
             score.innerHTML = scoreText;
-            li.CSS.pointerEvent = "none";
+            
+            document.getElementById("1").setAttribute('style', 'pointer-events: none; background: green');
+            
+            
+            
+           
             
         }else{
             console.log("wrong")
             event.target.style.background = "red";
             scoreText += 0;
             score.innerHTML = scoreText;
-            document.getElementById("1").style.background = "green"
+           
+            document.getElementById("1").setAttribute('style', 'pointer-events: none; background: green');
+            
+           
            
         }
-        
+    
+    
     }
 
 let Questions = ["Q2: Elementor is an example of what?", "Q3: Which is NOT an Example of CMS?", "Q4: Whats the Full Meaning of CMS","Q5: Which Plugin is used in SEO"];
